@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Paciente</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div style="background-image: url(https://cloudfront-us-east-1.images.arcpublishing.com/semana/R6TUEN5PBZBNLOK3C5UZ4C6AAQ.jpg);">
+    <div class="container mt-5" >
+    <div class="container-fluid" style="height: 100px; margin-bottom: 20px;">
+    <h1 style="text-align: center;">Pacientes</h1>
+            <a class="btn btn-primary" th:href="@{/agregar}">Crear </a>
+    </div>
+    <div class="container mt-5" >
+   <div th:if="${paciente != null and !paciente.empty}">
+    <table style="background-color: white;" class="table table-striped" border="1">
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>direccion</th>
+            <th>eps</th>
+            <th>telefono</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+
+
+        </tr>
+        <tr th:each="paciente: ${paciente}">
+            <td th:text="${paciente.nombre}">enfermedades</td>
+            <td th:text="${paciente.apellido}">alergias</td>
+            <td th:text="${paciente.direccion}">notas</td>
+            <td th:text="${paciente.eps}">medicamentos anteriorres</td>
+            <td th:text="${paciente.numero_telefono}">medicamentos anteriorres</td>
+            <td> <a th:href="@{/editar/}+ ${paciente.id_paciente}" th:text="Editar"/></td>
+            <td> <a th:href="@{/eliminar/}+ ${paciente.id_paciente}" th:text="Eliminar"/></td>
+
+        </tr>
+    </table>
+ </div>
+</div>
+</div>
+</div>
+</body>
+</html>

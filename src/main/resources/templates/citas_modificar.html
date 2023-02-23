@@ -1,0 +1,57 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Datos de la cita</title>
+</head>
+<body>
+<h1>Datos de la Cita</h1>
+<a th:href="@{/cita}">Regresar</a>
+<br/>
+
+<form th:action="@{/guardar/cita}" method="post" th:object="${cita}">
+    <input type="hidden" name="id_cita" th:field="*{id_cita}">
+    <br>
+
+    <label for="fecha">Fecha: </label>
+    <input type="date" name="fecha" th:field="*{fecha}">
+    <span th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}">Error</span>
+
+    <label for="hora">hora: </label>
+    <input type="text" name="hora" th:field="*{hora}">
+    <span th:if="${#fields.hasErrors('hora')}" th:errors="*{hora}">Error</span>
+
+    <br/>
+    <label for="estado">estado: </label>
+    <input type="text" name="estado" th:field="*{estado}">
+    <span th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}">Error</span>
+
+    <label for="observaciones">observaciones: </label>
+    <input type="text" name="observaciones" th:field="*{observaciones}">
+    <span th:if="${#fields.hasErrors('observaciones')}" th:errors="*{observaciones}">Error</span>
+
+    <br/>
+
+
+        <!-- otros campos de la cita -->
+        <div class="form-group">
+            <label for="medico">Médico:</label>
+            <select class="form-control" id="medico" name="medico.id_medico">
+                <option value="">Selecciona un médico</option>
+                <option th:each="medico : ${medicos}" th:value="${medico.id_medico}" th:text="${medico.nombre + ' ' + medico.apellido}"></option>
+            </select>
+        </div>
+
+    <div class="form-group">
+        <label for="paciente">Paciente:</label>
+        <select class="form-control" id="paciente" name="paciente.id_paciente">
+            <option value="">Selecciona un paciente</option>
+            <option th:each="paciente : ${pacientes}" th:value="${paciente.id_paciente}" th:text="${paciente.nombre + ' ' + paciente.apellido}"></option>
+        </select>
+    </div>
+
+
+    <input type="submit" name="guardar" value="Guardar"/>
+</form>
+</body>
+</html>

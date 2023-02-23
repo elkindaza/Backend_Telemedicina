@@ -1,0 +1,34 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>RECETAS</title>
+</head>
+<body>
+<h1>RECETAS MEDICAS</h1>
+<div th:if="${receta_medica != null and !receta_medica.empty}">
+  <table border="1">
+    <tr>
+      <th>Medicamentos</th>
+      <th>Dosis</th>
+      <th>Duracion</th>
+      <th>Instrucciones</th>
+      <th>Medico</th>
+      <th>Especialidad</th>
+
+
+    </tr>
+    <tr th:each="receta_medica: ${receta_medica}">
+      <th th:text="${receta_medica.medicamentos}">Medicamentos</th>
+      <th th:text="${receta_medica.dosis}">Dosis</th>
+      <th th:text="${receta_medica.duracion}">Duracion</th>
+      <th th:text="${receta_medica.instrucciones}">Instrucciones</th>
+      <th th:text="${receta_medica.medico.nombre}">Nombre</th>
+      <td th:text="${receta_medica.medico.especialidad}">Especialidad</td>
+    </tr>
+
+    </tr>
+  </table>
+</div>
+</body>
+</html>

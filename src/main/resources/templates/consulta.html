@@ -1,0 +1,53 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Consulta</title>
+</head>
+<body>
+<h1>Consulta</h1>
+<div th:if="${consulta != null and !consulta.empty}">
+    <table border="1">
+        <tr>
+            <th>Fecha</th>
+            <th>Sintomas</th>
+            <th>Diagnostico</th>
+            <th>Tratamiento</th>
+            <th>Notas Adicionales</th>
+            <th>Fecha de Cita</th>
+            <th>Hora de Cita</th>
+            <th>Nombre de paciente</th>
+            <th>eps</th>
+            <th>Medico</th>
+            <th>Especialidad</th>
+            <th>Pago Total</th>
+
+
+
+
+        </tr>
+        <tr th:each="consulta: ${consulta}">
+            <th th:text="${consulta.fecha}">Fecha</th>
+            <th th:text="${consulta.sintomas}">Iva</th>
+            <th th:text="${consulta.diagnostico}">Metodo de pago</th>
+            <th th:text="${consulta.tratamiento}">Estado</th>
+            <th th:text="${consulta.notas_adicionales}">Comentarios</th>
+
+           <td th:text="${consulta.cita.fecha}">Total</td>
+            <td th:text="${consulta.cita.hora}">Total</td>
+             <td th:text="${consulta.paciente.nombre}">Total</td>
+            <td th:text="${consulta.paciente.eps}">Total</td>
+            <td th:text="${consulta.medico.nombre}">Total</td>
+             <td th:text="${consulta.medico.especialidad}">Total</td>
+              <td th:text="${consulta.pagos.total}">Total</td>
+
+
+
+
+        </tr>
+
+        </tr>
+    </table>
+</div>
+</body>
+</html>

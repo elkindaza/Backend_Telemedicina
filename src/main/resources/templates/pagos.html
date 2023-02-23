@@ -1,0 +1,33 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>PAGOS</h1>
+<div th:if="${pagos != null and !pagos.empty}">
+    <table border="1">
+        <tr>
+            <th>Fecha</th>
+            <th>Iva</th>
+            <th>Metodo de Pago</th>
+            <th>Estado</th>
+            <th>Comentarios</th>
+            <th>Total</th>
+
+        </tr>
+        <tr th:each="pagos: ${pagos}">
+            <th th:text="${pagos.fecha}">Fecha</th>
+            <th th:text="${pagos.iva}">Iva</th>
+            <th th:text="${pagos.metodo_de_pago}">Metodo de pago</th>
+            <th th:text="${pagos.estado}">Estado</th>
+            <th th:text="${pagos.comentarios}">Comentarios</th>
+            <td th:text="${pagos.total}">Total</td>
+        </tr>
+
+        </tr>
+    </table>
+</div>
+</body>
+</html>

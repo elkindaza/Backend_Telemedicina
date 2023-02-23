@@ -1,0 +1,54 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Datos del paciente</title>
+</head>
+<body>
+<h1>Datos del paciente</h1>
+<a th:href="@{/paciente}">Regresar</a>
+<br/>
+<form th:action="@{/guardar}" method="post" th:object="${paciente}">
+  <input type="hidden" name="id_paciente" th:field="*{id_paciente}">
+  <br>
+  <label for="nombre">Nombre: </label>
+  <input type="text" name="nombre" th:field="*{nombre}">
+  <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error</span>
+
+  <label for="apellido">apellido: </label>
+  <input type="text" name="apellido" th:field="*{apellido}">
+  <span th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}">Error</span>
+
+  <br/>
+  <label for="direccion">direccion: </label>
+  <input type="text" name="direccion" th:field="*{direccion}">
+  <span th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}">Error</span>
+
+  <label for="numero_telefono">numero_telefono: </label>
+  <input type="number" name="numero_telefono" th:field="*{numero_telefono}">
+  <span th:if="${#fields.hasErrors('numero_telefono')}" th:errors="*{numero_telefono}">Error</span>
+
+  <br/>
+  <label for="correo_electronico">correo_electronico: </label>
+  <input type="email" name="correo_electronico" th:field="*{correo_electronico}">
+  <span th:if="${#fields.hasErrors('correo_electronico')}" th:errors="*{correo_electronico}">Error</span>
+
+  <label for="genero">genero: </label>
+  <input type="text" name="genero" th:field="*{genero}">
+  <span th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}">Error</span>
+
+  <br/>
+
+  <label for="fecha_nacimiento">fecha_nacimiento: </label>
+  <input type="date" name="fecha_nacimiento" th:field="*{fecha_nacimiento}">
+
+  <label for="cedula_ciudadania">cedula_ciudadania: </label>
+  <input type="number" name="cedula_ciudadania" th:field="*{cedula_ciudadania}">
+  <br/>
+  <label for="eps">eps: </label>
+  <input type="text" name="eps" th:field="*{eps}">
+
+  <input type="submit" name="guardar" value="Guardar"/>
+</form>
+</body>
+</html>
